@@ -13,6 +13,7 @@ from tkinter import messagebox
       
        
 #From Start Page To Tomato
+#This takes the buttons from the starter page and sends them off of the screen beyond what is visible and then continues the user to the first page in the product loop, tomato.
 def fromStartToTom():
    startButton.place(x=-1000, y=310)
    exitButton.place(x=-1000, y=310)
@@ -20,18 +21,21 @@ def fromStartToTom():
 
    
 #From Order Page Back To Tomato
+#This takes the buttons and entry fields from the ordering page and sends them off of the screen beyond what is visible and then continues the user to the first page in the product loop, tomato.
 def fromStartToTom():
    orderFormButtonsRemove
    advanceToTom()
           
        
    
-#Tomato Page   
+#Tomato Page  
+#This sets the background image to tomato and then sends the user to the tomato button "on" area. 
 def advanceToTom():
    label = Label(root, image=bg2)   
    label.place(x=0, y=0)
    tomatoButtonsOn()
    
+#This sets the label and button in the correct locations and to the colors that have been choosen.
 def tomatoButtonsOn():
    previousButtonTom = tk.Button(root, bg = "#F17E01", border = "-2", fg = "white", text="   <==   ", command = advanceToPump)
    previousButtonTom.place(x=400, y=445)
@@ -45,6 +49,7 @@ def tomatoButtonsOn():
 def advanceFromTom():
    tomatoButtonsOff()
    
+#This removes the label and buttons for this page.
 def tomatoButtonsOff():
    previousButtonTom.place(x=-1000, y=450)
    orderButtonTom.place(x=-1000, y=450)
@@ -58,6 +63,7 @@ def advanceToWed():
    label.place(x=0, y=0)
    weddingButtonsOn()
    
+#This sets the label and button in the correct locations and to the colors that have been choosen.
 def weddingButtonsOn():   
    previousButtonWed = tk.Button(root, bg = "#E8E7ED", border = "-2", fg = "#46752E", text="   <==   ", command = advanceToTom)
    previousButtonWed.place(x=785, y=220)
@@ -71,6 +77,7 @@ def weddingButtonsOn():
 def advanceFromWed():
    weddingButtonsOff()
       
+#This removes the label and buttons for this page.
 def weddingButtonsOff():   
    previousButtonWed.place(x=-1000, y=450)
    orderButtonWed.place(x=-1000, y=450)
@@ -84,6 +91,7 @@ def advanceToPump():
    label.place(x=0, y=0)
    pumpkinButtonsOn()
    
+#This sets the label and button in the correct locations and to the colors that have been choosen.
 def pumpkinButtonsOn():
    previousButtonPump = tk.Button(root, bg = "#DDEAF1", border = "-2", fg = "#CA9630", text="   <==   ", command = advanceToWed)
    previousButtonPump.place(x=400, y=560)
@@ -97,6 +105,7 @@ def pumpkinButtonsOn():
 def advanceFromPump():
    pumpkinButtonsOff()
    
+#This removes the label and buttons for this page.
 def pumpkinButtonsOff():
    previousButtonPump.place(x=-1000, y=450)
    orderButtonPump.place(x=-1000, y=450)
@@ -106,6 +115,8 @@ def pumpkinButtonsOff():
    
    
 #Order Form Page
+#Removes all of the labels and buttons no matter where the user entered the ordering form from.
+#Sets the box image to the ordering page background and then sets the ordering form buttons.
 def placeOrder():
    tomatoButtonsOff()
    weddingButtonsOff()
@@ -114,6 +125,7 @@ def placeOrder():
    label.place(x=0, y=0)
    orderFormButtonsPlace()
 
+#Actually places the ordering form entry fields.
 def orderFormButtonsPlace():
    borderValue = 1
    
@@ -154,6 +166,7 @@ def orderFormButtonsPlace():
    button2 = tk.Button(root, text='Order', command = finalThankYouPage)
    button2.place(x=350, y=225)
 
+#Removes all of the labels and buttons from the ordering page form.
 def orderFormButtonsRemove():   
    nameCustomer.place(x=-1000, y=50)
    nameRecipient.place(x=-1000, y=70)
@@ -168,11 +181,14 @@ def orderFormButtonsRemove():
    button.place(x=-1000, y=310)
    button1.place(x=-1000, y=310)
    
+#Outputs the fields that the user enters ... or it is supposed to at least. Stupid Python.
 def outputOrderInfo():
    print("\"" + nameCustomer.get() + "\",\"" + nameRecipient.get() + "\",\"" + address1.get() + "\",\"" + address2.get() + "\",\"" + addressCity.get() + "\",\"" + addressState.get() + "\",\"" + addressZip.get() + "\",\"" + phone.get() + "\",\"" + soupOption.get() + "\",\"" + customMessage.get() + "\"")
 
 
 #Thank You Page
+#Pop Up message saying that it was successful instead of just closing which caused questions as to whether it worked or just closed.
+#Then loading of the "Thank You" page.
 def finalThankYouPage():
    messagebox.showinfo
    messagebox.showinfo("You Sent Them Soup","Your order has been placed.")
@@ -190,6 +206,7 @@ def finalExit():
 
 
 # Main Window
+#Creating the main shell program and setting the size.
 root = tk.Tk()
 root.configure(width=1000, height=667)
 
@@ -206,7 +223,7 @@ label = Label(root, image=bg1)
 label.place(x=0, y=0)
 
 
-#Program Start Buttons and Text
+#Program Start Buttons and Label Text
 lbl = tk.Label(root, fg = "white", bg = "black", font=("Arial", 20), text="  Send 'em Soup  ")
 lbl.place(x=160, y=250)
 
@@ -218,6 +235,7 @@ exitButton.place(x=300, y=310)
 
 
 #Soup Button Options
+#Declaring these to be able to alter them throughout the program.
 previousButtonTom = tk.Button(root, bg = "black", border = "-2", fg = "white", text="   <==   ", command = advanceFromPump)
 orderButtonTom = tk.Button(root, bg = "black", border = "-2", fg = "white", text="   Order   ", command = placeOrder)
 nextButtonTom = tk.Button(root, bg = "black", border = "-2", fg = "white", text="   ==>   ", command = advanceToWed)
@@ -232,10 +250,11 @@ nextButtonPump = tk.Button(root, bg = "black", border = "-2", fg = "white", text
 
 
 #Soup Ordered Page
+#Declaring this to be able to alter them throughout the program.
 orderedExitButton = tk.Button(root, bg = "black", border = "-2", fg = "white", text="   Thank You   ", command = finalExit)
 
 
-
+#Declaring these to be able to alter them throughout the program.
 nameCustomer = tk.Entry(root)
 nameCustomer.insert(0, "Your Name")
 nameRecipient = tk.Entry(root)
@@ -258,15 +277,5 @@ customMessage = tk.Entry(root)
 customMessage.insert(0, "Message")
 
 
-
-
-
-
-
-
-
-
-
-
-
+#GOOOOOOOOO!!!!
 root.mainloop()
