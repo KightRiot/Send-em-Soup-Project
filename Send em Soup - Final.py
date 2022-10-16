@@ -174,11 +174,11 @@ def outputOrderInfo():
 
 #Thank You Page
 def finalThankYouPage():
+   messagebox.showinfo
+   messagebox.showinfo("You Sent Them Soup","Your order has been placed.")
    outputOrderInfo()
    label = Label(root, image=bg6)   
    label.place(x=0, y=0)
-   messagebox.showinfo
-   messagebox.showinfo("You Sent Them Soup","Your order has been placed.")
    orderedExitButton = tk.Button(root, bg = "black", border = "-2", fg = "white", text="   Thank You   ", command = finalExit)
    orderedExitButton.place(x=465, y=300)
 
